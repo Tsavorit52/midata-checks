@@ -1,7 +1,3 @@
 openpyxl
 streamlit
 pandas
-re
-base64
-io
-PIL
