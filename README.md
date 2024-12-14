@@ -17,9 +17,9 @@ It is based on hitobito, the Github Repo can be found [here](https://github.com/
 
 ## Available Checks:
 ### Duplikate
-
-### Doppelte Rollen
 Checks if there are duplicated entries, based on "Vorname" and "Nachname"
+### Doppelte Rollen
+Checks the Rollen column. There are comma separated roles. The app checks for duplicated roles.
 ### Ungültige Adresse
 Verifies if all Address Fields are filled in and hold valid Data.\
 **Regex used to check:**\
