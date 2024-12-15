@@ -42,8 +42,13 @@ with st.expander("Wie exportiere ich die passende Datei?"):
 #add divider
 st.divider()
 
+def clear_var():
+    st.session_state.errormessage = None
+    st.session_state.peoplefiltered = None
+    st.session_state.allgoodmessage = None
+
 #upload an excel file
-peopleCSV = st.file_uploader("Bitte ein Excel Export hochladen:", type=["csv","xlsx"], accept_multiple_files=False, disabled=False, label_visibility="visible")
+peopleCSV = st.file_uploader("Bitte ein Excel Export hochladen:", type=["csv","xlsx"], accept_multiple_files=False, disabled=False, label_visibility="visible", on_change=clear_var)
 
 #when file as selected
 if peopleCSV is not None:
@@ -56,9 +61,7 @@ if peopleCSV is not None:
             #load file with pandas
             allpeople = pd.read_excel(peopleCSV, sheet_name="Sheet1")
             st.success("Daten geladen!")
-        st.session_state.errormessage = None
-        st.session_state.peoplefiltered = None
-        st.session_state.allgoodmessage = None
+
     except:
         st.error("Daten konnten nicht geladen werden!")
 
