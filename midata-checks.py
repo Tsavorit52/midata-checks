@@ -386,7 +386,7 @@ if peopleCSV is not None:
                         st.session_state.errormessage = None
                         if st.session_state.peoplefiltered.empty:
                             st.session_state.allgoodmessage = 'Keine Einträge zu deiner Regex gefunden.'
-                        st.rerun()
+                    st.rerun()
                 #error if no Regex was entered
                 else:
                     st.error("Bitte das Regex Feld befüllen!")
