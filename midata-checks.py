@@ -301,8 +301,15 @@ if peopleCSV is not None:
                 if len(columns) != 0:
                     #create an empty list
                     st.session_state.peoplefiltered = pd.DataFrame(columns=allpeople.columns)
+                    
                     #iterate trough each row
                     for index, row in allpeople.iterrows():
+                        
+                        #this variable turn True of this row was added to the list
+                        added = False
+                        #this variable turn true if one of the selected fields is not null
+                        wasnotna = False
+
                         #if only one column was selected
                         if len(columns) == 1:
                             #if the field is empty, add row to the list
@@ -311,11 +318,6 @@ if peopleCSV is not None:
 
                         #if multiple columns are selected
                         else:
-                            #this variable turn True of this row was added to the list
-                            added = False
-                            #this variable turn true if one of the selected fields is not null
-                            wasnotna = False
-
                             #iterad trough all selected columns
                             for selected_column in columns:
                                 #if comparison is UND
@@ -326,12 +328,13 @@ if peopleCSV is not None:
                                 #if comparison is ODER
                                 else:
                                     #if this field is empty and the columns was not yet added
-                                    if pd.isna(row[selected_column]) and added != True:
+                                    if pd.isna(row[selected_column]) and (added != True):
                                         #add it to the list and mark as added
                                         st.session_state.peoplefiltered = pd.concat([st.session_state.peoplefiltered, pd.DataFrame([row])],ignore_index=True)
                                         added = True
+                                        
                             #if all of the selected columns where empty, this variable says False
-                            if wasnotna == False:
+                            if (wasnotna == False) and (comparison == 'UND'):
                                 #add column to the list
                                 st.session_state.peoplefiltered = pd.concat([st.session_state.peoplefiltered, pd.DataFrame([row])],ignore_index=True)
                     st.session_state.errormessage = None
