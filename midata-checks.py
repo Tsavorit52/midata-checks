@@ -17,7 +17,7 @@ if 'allgoodmessage' not in st.session_state:
 
 #add title and informations/how to use it
 st.title("MiData sanity checks")
-st.info("Datenschutzhinweis: Diese Website speichert keine der geladenen Daten. Sämtliche Daten werden nur verarbeitet und beim schliessen der Session gelöscht!",icon="ℹ️")
+st.info("Datenschutzhinweis: Diese Website speichert keine der geladenen Daten. Sämtliche Daten werden nur verarbeitet und beim schliessen des Browser-Tabs gelöscht!",icon="ℹ️")
 st.write("Exportiere eine Excel oder CSV Datei aus [MiData](%s) und lade sie hier, um nach Fehlern zu suchen. z.B. Duplikate oder ungültige Angaben" % 'https://db.scout.ch/de')
 st.markdown('**Wichtig! Alle Funktionen funktionieren nur wenn dein MiData auf Deutsch ist und wenn du "Alle Angaben" exportierst.**')
 
